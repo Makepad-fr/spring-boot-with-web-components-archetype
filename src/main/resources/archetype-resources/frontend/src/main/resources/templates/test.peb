@@ -1,0 +1,9 @@
+<html>
+	<head>
+		<title>Hello from Pebble templates</title>
+		<script type="module" src="/components/hello-world/hello-world.js"></script>
+	</head>
+	<body>
+		<hello-world></hello-world>
+	</body>
+</html>

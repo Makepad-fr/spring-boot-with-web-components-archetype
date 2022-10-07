@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>${frontendArtifactId}</artifactId>
+  <version>${frontendVersion}</version>
+
+  <properties>
+  </properties>
+  <parent>
+    <artifactId>${artifactId}</artifactId>
+    <groupId>${groupId}</groupId>
+    <version>${version}</version>
+  </parent>
+<dependencies>
+  <dependency>
+    <groupId>io.pebbletemplates</groupId>
+    <artifactId>pebble-spring-boot-starter</artifactId>
+    <version>3.1.5</version>
+  </dependency>
+</dependencies>
+  <build>
+    <plugins>
+    <plugin>
+      <artifactId>maven-clean-plugin</artifactId>
+      <version>2.5</version>
+      <configuration>
+        <filesets>
+          <fileset>
+            <directory>src/components</directory>
+            <includes>
+              <include>**/*.js</include>
+            </includes>
+            <followSymlinks>false</followSymlinks>
+          </fileset>
+        </filesets>
+      </configuration>
+    </plugin>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <!-- Use the latest released version:
+        https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
+        <version>1.9.1</version>
+        <executions>
+          <execution>
+            <!-- optional: you don't really need execution ids, but it looks nice in your build log. -->
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <!-- optional: default phase is "generate-resources" -->
+            <phase>install</phase>
+            <configuration>
+              <nodeVersion>v17.3.0</nodeVersion>
+            </configuration>
+          </execution>
+          <!-- NPM should be installed -->
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>install</phase>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>npm build</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <arguments>run build</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>18</source>
+          <target>18</target>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>

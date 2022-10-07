@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/core/pom.xml" />
+        <option value="$PROJECT_DIR$/frontend/pom.xml" />
+        <option value="$PROJECT_DIR$/server/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0" location="$PROJECT_DIR$" />
+    <resource url="https://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd" location="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_19_PREVIEW" project-jdk-name="temurin-19" project-jdk-type="JavaSDK" />
+</project>

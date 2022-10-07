@@ -1,0 +1,128 @@
+<archetype-descriptor
+  xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 https://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
+  name="java-spring-boot-web-components">
+  <requiredProperties>
+    <requiredProperty key="groupId">
+      <validationRegex>[a-z]+</validationRegex>
+    </requiredProperty>
+
+    <requiredProperty key="artifactId">
+      <validationRegex>[a-z]+(\–[a-z]+)+</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="version">
+      <validationRegex>^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$</validationRegex>
+    </requiredProperty>
+
+    <requiredProperty key="coreArtifactId">
+      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="coreVersion">
+      <validationRegex>^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="coreDirectoryName">
+      <validationRegex>[a-z](\-[a-z])?</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="coreModuleName">
+      <validationRegex>[a-zA-Z]+</validationRegex>
+    </requiredProperty>
+
+    <requiredProperty key="backendArtifactId">
+      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="backendVersion">
+      <validationRegex>^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="backendDirectoryName">
+      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="backendModuleName">
+      <validationRegex>[a-zA-Z]+</validationRegex>
+    </requiredProperty>
+
+    <requiredProperty key="frontendArtifactId">
+      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="frontendVersion">
+      <validationRegex>^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="frontendDirectoryName">
+      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="frontendModuleName">
+      <validationRegex>[a-zA-Z]+</validationRegex>
+    </requiredProperty>
+
+    <requiredProperty key="author">
+    </requiredProperty>
+    <requiredProperty key="license"></requiredProperty>
+    <requiredProperty key="licenseHeader">
+      <defaultValue>/* (C)$YEAR */</defaultValue>
+      <validationRegex>\/\*(\*(?!\/)|[^*])*\*\/</validationRegex>
+    </requiredProperty>
+  </requiredProperties>
+
+  <modules>
+    <module id="${coreArtifactId}" dir="core" name="${coreModuleName}">
+      <fileSets>
+        <fileSet filtered="true" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true">
+          <includes>
+            <include>pom.xml</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${frontendArtifactId}" dir="frontend" name="${frontendModuleName}">
+      <fileSets>
+        <fileSet filtered="true" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.ts</include>
+            <include>**/*.css</include>
+            <include>**/*.properties</include>
+            <include>**/*.peb</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true">
+          <includes>
+            <include>.gitignore</include>
+            <include>package.json</include>
+            <include>pom.xml</include>
+            <include>postcss.config.js</include>
+            <include>tsconfig.json</include>
+            <include>webpack.config.js</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${backendArtifactId}" dir="server" name="${backendModuleName}">
+      <fileSets>
+        <fileSet filtered="true" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true">
+          <includes>
+            <include>pom.xml</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+  </modules>
+
+</archetype-descriptor>
