@@ -15,9 +15,9 @@
     </properties>
 
     <modules>
-        <module>${frontendArtifactId}</module>
-        <module>${backendArtifactId}</module>
-        <module>${coreArtifactId}</module>
+        <module>${artifactId}-core</module>
+        <module>${artifactId}-web-application</module>
+        <module>${artifactId}-web-frontend</module>
     </modules>
 
     <build>

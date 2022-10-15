@@ -1,7 +1,7 @@
 {
-  "name": "${frontendArtifactId}",
-  "version": "${frontendVersion}",
-  "description": "Frontend of ${groupId}.${parentArtifactId}",
+  "name": "${artifactId}",
+  "version": "${version}",
+  "description": "Frontend of ${rootArtifactId}",
   "private": "true",
   "browser": "true",
   "scripts": {

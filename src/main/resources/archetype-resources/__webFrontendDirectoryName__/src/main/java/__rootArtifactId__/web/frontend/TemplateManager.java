@@ -11,7 +11,7 @@ import java.util.Map;
 public abstract class TemplateManager {
     private static final PebbleEngine pebbleEngine = new PebbleEngine.Builder().build();
     private static String DEFAULT_TEMPLATES_LOCATION = "templates";
-    private static String DEFAULT_TEMPLATE_EXTENSION = "peb";
+    private static String DEFAULT_TEMPLATE_EXTENSION = "peb";x
 
     /**
      * Get the template content with a context
