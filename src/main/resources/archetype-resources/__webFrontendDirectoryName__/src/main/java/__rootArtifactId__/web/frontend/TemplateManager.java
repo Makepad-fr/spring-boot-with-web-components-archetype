@@ -1,5 +1,5 @@
 /* (C)2022 Makepad SARL*/
-package io.makepad.visulog.web.frontend;
+package ${packagePrefix}.web.frontend;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;

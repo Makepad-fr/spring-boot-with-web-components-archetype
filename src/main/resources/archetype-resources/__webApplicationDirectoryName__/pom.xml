@@ -4,15 +4,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>${backendArtifactId}</artifactId>
-  <version>${backendVersion}</version>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
 
   <properties>
 
     <spring.boot.version>2.7.3</spring.boot.version>
   </properties>
   <parent>
-    <artifactId>${artifactId}</artifactId>
+    <artifactId>${rootArtifactId}</artifactId>
     <groupId>${groupId}</groupId>
     <version>${version}</version>
   </parent>
@@ -38,18 +38,18 @@
     </dependency>-->
     <dependency>
       <groupId>${groupId}</groupId>
-      <artifactId>${coreArtifactId}</artifactId>
-      <version>${coreVersion}</version>
+      <artifactId>${rootArtifactId}-core</artifactId>
+      <version>${version}</version>
     </dependency>
     <dependency>
       <groupId>${groupId}</groupId>
-      <artifactId>${frontendArtifactId}</artifactId>
-      <version>${frontendVersion}</version>
+      <artifactId>${rootArtifactId}-web-frontend</artifactId>
+      <version>${version}</version>
     </dependency>
     <dependency>
       <groupId>${groupId}</groupId>
-      <artifactId>${coreArtifactId}</artifactId>
-      <version>${coreVersion}</version>
+      <artifactId>${rootArtifactId}-core</artifactId>
+      <version>${version}</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

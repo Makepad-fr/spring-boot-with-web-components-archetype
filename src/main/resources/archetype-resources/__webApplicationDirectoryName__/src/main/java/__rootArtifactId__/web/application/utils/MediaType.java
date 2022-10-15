@@ -1,5 +1,4 @@
-/* (C)2022 Makepad SARL*/
-package io.makepad.visulog.web.backend.utils;
+package ${packagePrefix}.web.application.utils;
 
 public interface MediaType {
     String JSON = "application/json";

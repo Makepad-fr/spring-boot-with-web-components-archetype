@@ -1,5 +1,4 @@
-/* (C)2022 Makepad SARL*/
-package io.makepad.visulog.web.backend.controller;
+package ${packagePrefix}.web.application.controller;
 
 import io.makepad.core.dto.SampleDto;
 import io.makepad.visulog.web.backend.utils.MediaType;
