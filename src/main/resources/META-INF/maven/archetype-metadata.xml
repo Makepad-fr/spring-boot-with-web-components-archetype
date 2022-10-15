@@ -5,81 +5,73 @@
   name="java-spring-boot-web-components">
   <requiredProperties>
     <requiredProperty key="groupId">
-      <validationRegex>[a-z]+</validationRegex>
     </requiredProperty>
 
     <requiredProperty key="artifactId">
-      <validationRegex>[a-z]+(\–[a-z]+)+</validationRegex>
     </requiredProperty>
     <requiredProperty key="version">
-      <validationRegex>^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$</validationRegex>
     </requiredProperty>
 
-    <requiredProperty key="coreArtifactId">
-      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
-    </requiredProperty>
     <requiredProperty key="coreVersion">
-      <validationRegex>^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$</validationRegex>
+      <defaultValue>${version}</defaultValue>
     </requiredProperty>
     <requiredProperty key="coreDirectoryName">
-      <validationRegex>[a-z](\-[a-z])?</validationRegex>
+      <defaultValue>${artifactId}-core</defaultValue>
     </requiredProperty>
     <requiredProperty key="coreModuleName">
-      <validationRegex>[a-zA-Z]+</validationRegex>
+      <defaultValue>${artifactId}-core</defaultValue>
     </requiredProperty>
 
-    <requiredProperty key="backendArtifactId">
-      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
+    <requiredProperty key="webApplicationVersion">
+      <defaultValue>${version}</defaultValue>
     </requiredProperty>
-    <requiredProperty key="backendVersion">
-      <validationRegex>^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$</validationRegex>
+    <requiredProperty key="webApplicationDirectoryName">
+      <defaultValue>${artifactId}-web-application</defaultValue>
     </requiredProperty>
-    <requiredProperty key="backendDirectoryName">
-      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
-    </requiredProperty>
-    <requiredProperty key="backendModuleName">
-      <validationRegex>[a-zA-Z]+</validationRegex>
+    <requiredProperty key="webApplicationModuleName">
+      <defaultValue>${artifactId}-web-application</defaultValue>
     </requiredProperty>
 
-    <requiredProperty key="frontendArtifactId">
-      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
+    <requiredProperty key="webFrontendVersion">
+      <defaultValue>${version}</defaultValue>
     </requiredProperty>
-    <requiredProperty key="frontendVersion">
-      <validationRegex>^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$</validationRegex>
+    <requiredProperty key="webFrontendDirectoryName">
+      <defaultValue>${artifactId}-web-frontend</defaultValue>
     </requiredProperty>
-    <requiredProperty key="frontendDirectoryName">
-      <validationRegex>[a-z]+(\-[a-z]+)+</validationRegex>
-    </requiredProperty>
-    <requiredProperty key="frontendModuleName">
-      <validationRegex>[a-zA-Z]+</validationRegex>
+    <requiredProperty key="webFrontendModuleName">
+      <defaultValue>${artifactId}-web-frontend</defaultValue>
     </requiredProperty>
 
     <requiredProperty key="author">
     </requiredProperty>
-    <requiredProperty key="license"></requiredProperty>
+    <requiredProperty key="license"/>
     <requiredProperty key="licenseHeader">
       <defaultValue>/* (C)$YEAR */</defaultValue>
       <validationRegex>\/\*(\*(?!\/)|[^*])*\*\/</validationRegex>
     </requiredProperty>
+    <requiredProperty key="packageArtifactIdPrefix">
+      <defaultValue>${artifactId.replace("-","_")}</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="packagePrefix">
+      <defaultValue>${groupId}.${packageArtifactIdPrefix}</defaultValue>
+    </requiredProperty>
+      <requiredProperty key="corePackage">
+        <defaultValue>${packagePrefix}.core</defaultValue>
+      </requiredProperty>
   </requiredProperties>
 
   <modules>
-    <module id="${coreArtifactId}" dir="core" name="${coreModuleName}">
+    <module id="${rootArtifactId}-core" dir="__coreDirectoryName__" name="${coreModuleName}">
       <fileSets>
         <fileSet filtered="true" packaged="true">
           <directory>src/main/java</directory>
           <includes>
             <include>**/*.java</include>
-          </includes>
-        </fileSet>
-        <fileSet filtered="true" packaged="true">
-          <includes>
-            <include>pom.xml</include>
           </includes>
         </fileSet>
       </fileSets>
     </module>
-    <module id="${frontendArtifactId}" dir="frontend" name="${frontendModuleName}">
+    <module id="${rootArtifactId}-web-frontend" dir="__webFrontendDirectoryName__" name="${webFrontendModuleName}">
       <fileSets>
         <fileSet filtered="true" packaged="true">
           <directory>src/main/java</directory>
@@ -87,7 +79,7 @@
             <include>**/*.java</include>
           </includes>
         </fileSet>
-        <fileSet filtered="true" packaged="true">
+        <fileSet filtered="true">
           <directory>src/main/resources</directory>
           <includes>
             <include>**/*.ts</include>
@@ -96,19 +88,19 @@
             <include>**/*.peb</include>
           </includes>
         </fileSet>
-        <fileSet filtered="true" packaged="true">
+        <fileSet filtered="true">
+          <directory></directory>
           <includes>
-            <include>.gitignore</include>
+           <include>.gitignore</include>
             <include>package.json</include>
-            <include>pom.xml</include>
-            <include>postcss.config.js</include>
             <include>tsconfig.json</include>
+            <include>postcss.config.js</include>
             <include>webpack.config.js</include>
           </includes>
         </fileSet>
       </fileSets>
     </module>
-    <module id="${backendArtifactId}" dir="server" name="${backendModuleName}">
+    <module id="${rootArtifactId}-web-application" dir="__webApplicationDirectoryName__" name="${webApplicationModuleName}">
       <fileSets>
         <fileSet filtered="true" packaged="true">
           <directory>src/main/java</directory>
@@ -116,9 +108,10 @@
             <include>**/*.java</include>
           </includes>
         </fileSet>
-        <fileSet filtered="true" packaged="true">
+        <fileSet filtered="true">
+          <directory>src/main/resources</directory>
           <includes>
-            <include>pom.xml</include>
+            <include>**/*.properties</include>
           </includes>
         </fileSet>
       </fileSets>
